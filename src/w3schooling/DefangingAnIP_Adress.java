@@ -21,18 +21,38 @@ public class DefangingAnIP_Adress {
         String[] ip = scan.nextLine().split("\\.");
         
         ArrayList<String> ipDefanged = new ArrayList<String>();
-        String defangedIpString;
+        
         for (int i=0; i<ip.length; i++){
-           ipDefanged.add("[");
-           ipDefanged.add((ip[i]));
-           ipDefanged.add("]");
+            
+           if (i<1){
+               ipDefanged.add((ip[i]));
+              
            
-           defangedIpString = ipDefanged.toString();
-            System.out.println(defangedIpString);
+               
+           }else{
+           ipDefanged.add("[.]");
+           ipDefanged.add((ip[i]));
+           }
+           
+           
+           
            
            
             
         }
+        
+        String defangedIpAdress = ipDefanged.toString().replaceAll(",", "").replaceFirst("\\[", "").replaceAll(" ", "");
+        
+        String reverseIP = new StringBuffer(defangedIpAdress).reverse().toString().replaceFirst("\\]", "");
+        String finalIP = new StringBuffer(reverseIP).reverse().toString();
+        
+        System.out.println(finalIP);
+        
+        
+        
+        
+        
+        
         
              
     }
